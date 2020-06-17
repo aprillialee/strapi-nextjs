@@ -17,7 +17,7 @@ export default function Home({ albums }) {
         flexDirection={{ _: "column", md: "row" }}
       >
         {albums.map((album) => (
-          <Box width={{ _: "100%", md: "30%" }} key={album.id}>
+          <Box width={{ _: "100%", md: "30%" }} padding={20} key={album.id}>
             <Card album={album} />
           </Box>
         ))}
