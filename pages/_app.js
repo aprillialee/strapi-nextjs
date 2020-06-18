@@ -8,7 +8,6 @@ import getConfig from "next/config";
 import fetch from "isomorphic-unfetch";
 
 function MyApp({ Component, pageProps, navigation }) {
-  console.log(navigation);
   return (
     <>
       <ThemeProvider theme={theme}>

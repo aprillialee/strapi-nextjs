@@ -1,21 +1,35 @@
 import styled from "@emotion/styled";
-
 import { rem } from "polished";
+
+import Link from "next/Link";
 
 function Card({ album }) {
   const { API_URL } = process.env;
+
+  if (!album.genre) {
+    album.genre = {};
+    album.genre.slug = "uncategorised";
+  }
   return (
     <CardStyled>
       <div className="poster">
-        <img
-          className="image"
-          src={API_URL + album.album_cover.url}
-          alt="album-cover"
-        ></img>
+        {album.album_cover && (
+          <img
+            className="image"
+            src={API_URL + album.album_cover.url}
+            alt="album-cover"
+          ></img>
+        )}
       </div>
       <div className="body">
         <h2>{album.title}</h2>
         <p dangerouslySetInnerHTML={{ __html: album.Review }} />
+        <Link
+          href="/albums/[genre]/[slug]"
+          as={`/albums/${album.genre.slug}/${album.slug}`}
+        >
+          <a>More about this album</a>
+        </Link>
       </div>
     </CardStyled>
   );
@@ -42,6 +56,11 @@ const CardStyled = styled.div`
     p {
       color: #666666;
       line-height: 1.5;
+    }
+    a {
+      display: inline-block;
+      margin: 20px 0;
+      text-decoration: none;
     }
   }
 `;

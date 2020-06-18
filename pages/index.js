@@ -15,6 +15,8 @@ export default function Home({ albums }) {
       <Flex
         justifyContent="space-between"
         flexDirection={{ _: "column", md: "row" }}
+        mb={100}
+        flexWrap="wrap"
       >
         {albums.map((album) => (
           <Box width={{ _: "100%", md: "30%" }} padding={20} key={album.id}>
