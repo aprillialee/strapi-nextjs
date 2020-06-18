@@ -3,13 +3,17 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-function Navigation({ navigation }) {
+import { useContext } from "react";
+import HeaderContext from "../contexts/HeaderContext";
+
+function Navigation() {
   const router = useRouter();
-  console.log(router);
+  const { menuItems } = useContext(HeaderContext);
+
   return (
     <NavigationStyled>
       <ul>
-        {navigation.map((item) => (
+        {menuItems.map((item) => (
           <li key={item.id}>
             <Link href={item.slug}>
               <a className={router.pathname === item.slug ? "active" : ""}>

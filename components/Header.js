@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import Navigation from "components/Navigation";
 
-function Header({ navigation }) {
+function Header() {
   return (
     <HeaderStyled>
       <Box variant="container">
@@ -19,7 +19,7 @@ function Header({ navigation }) {
               </a>
             </Link>
           </div>
-          <Navigation navigation={navigation} />
+          <Navigation />
         </Flex>
       </Box>
     </HeaderStyled>

@@ -3,24 +3,34 @@ import { Box, Flex } from "reflexbox";
 import getConfig from "next/config";
 import fetch from "isomorphic-unfetch";
 
+import { NextSeo } from "next-seo";
+
 function Album({ album }) {
   const { API_URL } = process.env;
+
+  const SEO = {
+    title: `Prilly's Albums | ${album.title}`,
+    description: `${album.review}`,
+  };
   return (
-    <Box variant="container">
-      <Box as="h2" my={40}>
-        {album.title}
+    <>
+      <NextSeo {...SEO} />
+      <Box variant="container">
+        <Box as="h2" my={40}>
+          {album.title}
+        </Box>
+        <Box>
+          <img
+            className="image"
+            src={API_URL + album.album_cover.url}
+            alt="album-cover"
+          ></img>
+        </Box>
+        <Box maxWidth={600}>
+          <p dangerouslySetInnerHTML={{ __html: album.Review }} />
+        </Box>
       </Box>
-      <Box>
-        <img
-          className="image"
-          src={API_URL + album.album_cover.url}
-          alt="album-cover"
-        ></img>
-      </Box>
-      <Box maxWidth={600}>
-        <p dangerouslySetInnerHTML={{ __html: album.Review }} />
-      </Box>
-    </Box>
+    </>
   );
 }
 
