@@ -10,12 +10,16 @@ function Header() {
   return (
     <HeaderStyled>
       <Box variant="container">
-        <Flex justifyContent="space-between" alignItems="center" padding={10}>
+        <Flex
+          justifyContent="space-between"
+          alignItems="center"
+          padding={100}
+          paddingTop={60}
+        >
           <div className="logo">
             <Link href="/">
               <a>
                 <img src="/images/vinyl.png" alt="Sites Logo" />
-                <span className="logo-text">Album Review</span>
               </a>
             </Link>
           </div>
@@ -27,8 +31,8 @@ function Header() {
 }
 
 const HeaderStyled = styled.header`
-  background: #efefef;
-  height: 50px;
+  background: #2c3944;
+  height: 80px;
 
   .logo {
     a {
@@ -36,14 +40,6 @@ const HeaderStyled = styled.header`
       align-items: center;
       text-decoration: none;
       width: ${rem(30)};
-    }
-
-    .logo-text {
-      color: #333333;
-      font-weight: bold;
-      font-size: ${rem(20)};
-      margin-left: ${rem(20)};
-      white-space: nowrap;
     }
   }
 `;

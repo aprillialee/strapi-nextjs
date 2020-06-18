@@ -39,7 +39,7 @@ const NavigationStyled = styled.div`
     }
     a {
       text-decoration: none;
-      color: #4c9ee3;
+      color: #a6b8c8;
 
       &:hover {
         text-decoration: underline;

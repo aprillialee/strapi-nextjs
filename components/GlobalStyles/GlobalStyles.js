@@ -8,9 +8,13 @@ const GlobalStyles = () => (
           line-height: 1.15; /* 1 */
           -ms-text-size-adjust: 100%; /* 2 */
           -webkit-text-size-adjust: 100%; /* 2 */
+          background: #2c3944;
+          display: inline-block;
+          text-align: center;
         }
         body {
           margin: 0;
+          color: #a6b8c8;
         }
         article,
         aside,

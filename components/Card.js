@@ -12,23 +12,18 @@ function Card({ album }) {
   }
   return (
     <CardStyled>
-      <div className="poster">
-        {album.album_cover && (
-          <img
-            className="image"
-            src={API_URL + album.album_cover.url}
-            alt="album-cover"
-          ></img>
-        )}
-      </div>
       <div className="body">
-        <h2>{album.title}</h2>
-        <p dangerouslySetInnerHTML={{ __html: album.Review }} />
         <Link
           href="/albums/[genre]/[slug]"
           as={`/albums/${album.genre.slug}/${album.slug}`}
         >
-          <a>More about this album</a>
+          {album.album_cover && (
+            <img
+              className="image"
+              src={API_URL + album.album_cover.url}
+              alt="album-cover"
+            ></img>
+          )}
         </Link>
       </div>
     </CardStyled>
@@ -38,30 +33,22 @@ function Card({ album }) {
 const CardStyled = styled.div`
   width: 100%;
   border: 1px solid #cccccc;
-  margin-top: ${rem(50)};
   border-radius: ${rem(20)};
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(166, 184, 200, 0.2);
+  background: #a6b8c8;
+  cursor: pointer;
 
-  .image {
+  img {
     width: 100%;
+    height: 100%;
   }
 
-  .body {
-    padding: ${rem(20)};
-    h3 {
-      margin-bottom: ${rem(20)};
-    }
-
-    p {
-      color: #666666;
-      line-height: 1.5;
-    }
-    a {
-      display: inline-block;
-      margin: 20px 0;
-      text-decoration: none;
-    }
+  a {
+    display: inline-block;
+    margin: 20px 0;
+    text-decoration: none;
+    cursor: pointer;
   }
 `;
 

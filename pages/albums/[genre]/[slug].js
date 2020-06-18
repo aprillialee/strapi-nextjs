@@ -1,4 +1,6 @@
 import { Box, Flex } from "reflexbox";
+import styled from "@emotion/styled";
+import { rem } from "polished";
 
 import getConfig from "next/config";
 import fetch from "isomorphic-unfetch";
@@ -15,21 +17,23 @@ function Album({ album }) {
   return (
     <>
       <NextSeo {...SEO} />
-      <Box variant="container">
-        <Box as="h2" my={40}>
-          {album.title}
+      <SlugStyle>
+        <Box variant="container">
+          <Box as="h2" my={40}>
+            {album.title}
+          </Box>
+          <Box>
+            <img
+              className="image"
+              src={API_URL + album.album_cover.url}
+              alt="album-cover"
+            ></img>
+          </Box>
+          <Box>
+            <p dangerouslySetInnerHTML={{ __html: album.Review }} />
+          </Box>
         </Box>
-        <Box>
-          <img
-            className="image"
-            src={API_URL + album.album_cover.url}
-            alt="album-cover"
-          ></img>
-        </Box>
-        <Box maxWidth={600}>
-          <p dangerouslySetInnerHTML={{ __html: album.Review }} />
-        </Box>
-      </Box>
+      </SlugStyle>
     </>
   );
 }
@@ -46,5 +50,22 @@ export async function getServerSideProps(context) {
     },
   };
 }
+
+const SlugStyle = styled.div`
+  width: 100%;
+  text-align: center;
+
+  img {
+    width: ${rem(350)};
+    border: 1px solid #cccccc;
+    border-radius: ${rem(20)};
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(166, 184, 200, 0.2);
+  }
+
+  p {
+    margin-top: 50px;
+  }
+`;
 
 export default Album;
